@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Montserrat:wght@600;700;800&display=swap');
+@import 'tailwindcss';
+
+:root {
+	--font-primary: 'Inter', sans-serif;
+	--font-display: 'Montserrat', sans-serif;
+	--bg-dark: #0f172a;
+	--bg-darker: #020617;
+	--accent: #fbbf24;
+	--shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+* {
+	font-family: var(--font-primary);
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
