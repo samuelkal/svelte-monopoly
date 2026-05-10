@@ -12,6 +12,7 @@
 		canUpgradeProperty,
 		hasMoneyForUpgrade,
 		pendingProperty,
+		onTradeClick = () => {},
 		skipUpgrade
 	} = $props();
 </script>
@@ -50,6 +51,10 @@
 				Buy Casino ($500)
 			</button>
 		{/if}
+
+		<button class="btn btn-trade" onclick={onTradeClick} type="button">
+			🤝 Trade
+		</button>
 
 		{#if isInJail}
 			<button
@@ -152,6 +157,11 @@
 
 	.btn-casino {
 		background: linear-gradient(135deg, #7c2d12 0%, #ea580c 100%);
+	}
+
+	.btn-trade {
+		background: linear-gradient(135deg, #0f172a 0%, #334155 100%);
+		border: 1px solid rgba(251, 191, 36, 0.25);
 	}
 
 	.btn-jail {

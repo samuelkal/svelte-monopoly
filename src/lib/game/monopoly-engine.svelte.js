@@ -4,7 +4,7 @@ const BOARD_SIZE = 40;
 const START_REWARD_PASS = 200;
 const START_REWARD_LAND = 100;
 const JAIL_FEE = 50;
-const TAX_TILES = [3, 14, 23];
+const TAX_TILES = [3, 14, 33];
 const TAX_AMOUNT = 200;
 const JAIL_TILE = 10;
 const CASINO_TILE = 20;
@@ -13,7 +13,7 @@ const SPECIAL_NOTIFICATION_DURATION = 2500;
 const MAX_MESSAGES = 10;
 const MAX_NOTIFICATIONS = 5;
 
-const EVENT_TILES = [5, 12, 21, 29, 36];
+const EVENT_TILES = [5, 12, 21, 39, 33];
 
 function defaultRng() {
 	return {
@@ -36,39 +36,47 @@ function createDefaultPlayers() {
 
 function createDefaultProperties() {
 	return {
-		0: { name: 'GO', price: 0, rent: 0, owner: null, color: 'special', houses: 0, houseCost: 0 },
-		10: { name: 'Jail', price: 0, rent: 0, owner: null, color: 'special', houses: 0, houseCost: 0 },
-		20: { name: 'Casino', price: 0, rent: 0, owner: null, color: 'special', houses: 0, houseCost: 0 },
-		30: { name: 'Epstein Island', price: 0, rent: 0, owner: null, color: 'special', houses: 0, houseCost: 0 },
-		1: { name: 'Picin', price: 60, rent: 5, owner: null, color: 'red', houses: 0, houseCost: 50 },
-		2: { name: 'Brno', price: 80, rent: 8, owner: null, color: 'red', houses: 0, houseCost: 50 },
-		4: { name: 'Mrtnik', price: 100, rent: 10, owner: null, color: 'red', houses: 0, houseCost: 50 },
-		6: { name: 'Pooh', price: 120, rent: 12, owner: null, color: 'brown', houses: 0, houseCost: 50 },
-		8: { name: 'Bombaj', price: 140, rent: 14, owner: null, color: 'brown', houses: 0, houseCost: 50 },
-		9: { name: 'Dilli', price: 160, rent: 16, owner: null, color: 'brown', houses: 0, houseCost: 50 },
-		11: { name: 'Wank', price: 180, rent: 18, owner: null, color: 'yellow', houses: 0, houseCost: 100 },
-		13: { name: 'Berlin', price: 200, rent: 20, owner: null, color: 'yellow', houses: 0, houseCost: 100 },
-		15: { name: 'Wegscheid', price: 220, rent: 22, owner: null, color: 'yellow', houses: 0, houseCost: 100 },
-		16: { name: 'UK', price: 240, rent: 24, owner: null, color: 'white', houses: 0, houseCost: 100 },
-		17: { name: 'Somalia', price: 260, rent: 26, owner: null, color: 'green', houses: 0, houseCost: 100 },
-		18: { name: 'UK', price: 280, rent: 28, owner: null, color: 'white', houses: 0, houseCost: 100 },
-		19: { name: 'Somalia', price: 300, rent: 30, owner: null, color: 'green', houses: 0, houseCost: 100 },
-		22: { name: 'Virginia', price: 320, rent: 32, owner: null, color: 'black', houses: 0, houseCost: 150 },
-		24: { name: 'Oregon', price: 340, rent: 34, owner: null, color: 'black', houses: 0, houseCost: 150 },
-		25: { name: 'DC', price: 360, rent: 36, owner: null, color: 'black', houses: 0, houseCost: 150 },
-		27: { name: 'Abuja', price: 380, rent: 38, owner: null, color: 'darkbrown', houses: 0, houseCost: 150 },
-		28: { name: 'Lagos', price: 400, rent: 40, owner: null, color: 'darkbrown', houses: 0, houseCost: 150 },
-		31: { name: 'Tel Aviv', price: 420, rent: 42, owner: null, color: 'blue', houses: 0, houseCost: 150 },
-		32: { name: 'GOD PROMISED', price: 450, rent: 45, owner: null, color: 'green', houses: 0, houseCost: 200 },
-		33: { name: 'Herzliya', price: 480, rent: 48, owner: null, color: 'blue', houses: 0, houseCost: 200 },
-		35: { name: 'Jerusalem', price: 500, rent: 50, owner: null, color: 'blue', houses: 0, houseCost: 200 },
-		37: { name: 'Beijing', price: 550, rent: 55, owner: null, color: 'darkred', houses: 0, houseCost: 200 },
-		38: { name: 'Tibet', price: 600, rent: 60, owner: null, color: 'darkred', houses: 0, houseCost: 200 },
-		39: { name: 'Chongqing', price: 700, rent: 70, owner: null, color: 'darkred', houses: 0, houseCost: 200 },
-		7: { name: 'Water Company', price: 150, rent: 25, owner: null, color: 'utility', houses: 0, houseCost: 0 },
-		26: { name: 'Oil Company', price: 150, rent: 25, owner: null, color: 'utility', houses: 0, houseCost: 0 },
-		34: { name: 'Hat Company', price: 150, rent: 25, owner: null, color: 'utility', houses: 0, houseCost: 0 }
-	};
+    0: { name: 'GO', price: 0, rent: 0, owner: null, color: 'special', houses: 0, houseCost: 0 },
+    10: { name: 'Jail', price: 0, rent: 0, owner: null, color: 'special', houses: 0, houseCost: 0 },
+    20: { name: 'Casino', price: 500, rent: 0, owner: null, color: 'special', houses: 0, houseCost: 0 },
+    30: { name: 'Epstein Island', price: 0, rent: 0, owner: null, color: 'special', houses: 0, houseCost: 0 },
+
+    // HORNÍ STRANA (ID 1-9)
+    1: { name: 'Picin', price: 250, rent: 45, owner: null, color: 'red', houses: 0, houseCost: 100 },
+    2: { name: 'Brno', price: 300, rent: 55, owner: null, color: 'red', houses: 0, houseCost: 100 },
+    4: { name: 'Mrtnik', price: 350, rent: 65, owner: null, color: 'red', houses: 0, houseCost: 100 },
+    6: { name: 'Pooh', price: 150, rent: 25, owner: null, color: 'brown', houses: 0, houseCost: 50 },
+    8: { name: 'Bombaj', price: 180, rent: 30, owner: null, color: 'brown', houses: 0, houseCost: 50 },
+    9: { name: 'Dilli', price: 200, rent: 35, owner: null, color: 'brown', houses: 0, houseCost: 50 },
+    7: { name: 'Water', price: 200, rent: 50, owner: null, color: 'utility', houses: 0, houseCost: 0 },
+
+    // PRAVÁ STRANA (ID 11-19)
+    11: { name: 'Wank', price: 400, rent: 80, owner: null, color: 'black', houses: 0, houseCost: 150 },
+    13: { name: 'Berlin', price: 450, rent: 90, owner: null, color: 'black', houses: 0, houseCost: 150 },
+    15: { name: 'Munich', price: 500, rent: 100, owner: null, color: 'black', houses: 0, houseCost: 150 },
+    16: { name: 'Leeds', price: 550, rent: 120, owner: null, color: 'orange', houses: 0, houseCost: 200 },
+    18: { name: 'London', price: 600, rent: 135, owner: null, color: 'orange', houses: 0, houseCost: 200 },
+    19: { name: 'Somalia', price: 450, rent: 100, owner: null, color: 'green', houses: 0, houseCost: 100 },
+    17: { name: 'Knife', price: 200, rent: 50, owner: null, color: 'utility', houses: 0, houseCost: 0 },
+
+    // SPODNÍ STRANA (ID 21-29) - IZRAEL & ČÍNA
+    21: { name: 'Tel Aviv', price: 800, rent: 220, owner: null, color: 'blue', houses: 0, houseCost: 300 },
+    22: { name: 'Herzliya', price: 850, rent: 250, owner: null, color: 'blue', houses: 0, houseCost: 300 },
+    23: { name: 'IDK', price: 900, rent: 280, owner: null, color: 'blue', houses: 0, houseCost: 350 },
+    24: { name: 'Jerusalem', price: 1000, rent: 350, owner: null, color: 'blue', houses: 0, houseCost: 350 },
+    27: { name: 'Beijing', price: 750, rent: 180, owner: null, color: 'pink', houses: 0, houseCost: 250 },
+    28: { name: 'Tibet', price: 800, rent: 200, owner: null, color: 'pink', houses: 0, houseCost: 250 },
+    29: { name: 'Shanghai', price: 900, rent: 250, owner: null, color: 'pink', houses: 0, houseCost: 300 },
+    25: { name: 'Hat', price: 200, rent: 50, owner: null, color: 'utility', houses: 0, houseCost: 0 },
+
+    // LEVÁ STRANA (ID 31-39) - JAMAJKA & USA
+    32: { name: 'Virginia', price: 650, rent: 140, owner: null, color: 'purple', houses: 0, houseCost: 200 },
+    34: { name: 'Oregon', price: 700, rent: 160, owner: null, color: 'purple', houses: 0, houseCost: 200 },
+    35: { name: 'DC', price: 750, rent: 180, owner: null, color: 'purple', houses: 0, houseCost: 200 },
+    37: { name: 'Kingston', price: 700, rent: 160, owner: null, color: 'red', houses: 0, houseCost: 200 },
+    38: { name: 'Negril', price: 800, rent: 200, owner: null, color: 'red', houses: 0, houseCost: 200 },
+    36: { name: 'Oil', price: 300, rent: 75, owner: null, color: 'utility', houses: 0, houseCost: 0 }
+};
 }
 
 function toInt(value) {

@@ -185,7 +185,7 @@ export const EVENTS = [
 		type: 'WORLD_EFFECT',
 		emoji: '🏔️',
 		execute: (engine, playerId) => {
-			const tibetPosition = 38; // Tibet je na pozici 38
+			const tibetPosition = 28; // Tibet je na pozici 38
 			const tibetProperty = engine.properties[tibetPosition];
 			
 			if (tibetProperty) {

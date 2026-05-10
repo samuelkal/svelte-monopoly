@@ -5,8 +5,10 @@
 	import GameLog from '$lib/ui/GameLog.svelte';
 	import PlayerPanel from '$lib/ui/PlayerPanel.svelte';
 	import ActionPanel from '$lib/ui/ActionPanel.svelte';
+	import TradeModal from '$lib/ui/TradeModal.svelte';
 
 	const engine = new MonopolyEngine();
+	let showTradeModal = $state(false);
 	const specialNoBuyTiles = [0, 10, 20, 30, 5, 12, 21, 29, 36, 3, 14, 23, 7, 26, 34];
 // DEBUG: Zpřístupní engine v konzoli prohlížeče
 if (typeof window !== 'undefined') {
@@ -59,22 +61,33 @@ if (typeof window !== 'undefined') {
 	function skipUpgrade() {
 		engine.pendingUpgradePosition = null;
 	}
+
+	function openTradeModal() {
+		showTradeModal = true;
+	}
+
+	function closeTradeModal() {
+		showTradeModal = false;
+	}
 </script>
 
 <div class="app-shell">
 	<BigNotifications notifications={engine.bigNotifications} onRemoveNotification={removeNotification} />
 
-	<!-- Board je dominantní element – zabere max plochu, je vždy čtvercový -->
+	<!-- Left Sidebar: Game Log -->
+	<aside class="sidebar sidebar-left">
+		<GameLog messages={engine.messages} />
+	</aside>
+
+	<!-- Center: Board (dominates the center) -->
 	<div class="board-container">
 		<div class="board-wrap">
-			<Board players={engine.players} properties={engine.properties}>
-				<GameLog messages={engine.messages} />
-			</Board>
+			<Board players={engine.players} properties={engine.properties} />
 		</div>
 	</div>
 
-	<!-- Sidebar: minimalistický, flexibilní, fokus na data, ne na dekoraci -->
-	<aside class="sidebar">
+	<!-- Right Sidebar: Actions & Player Info -->
+	<aside class="sidebar sidebar-right">
 		<ActionPanel 
 			{engine}
 			{runAction}
@@ -88,6 +101,7 @@ if (typeof window !== 'undefined') {
 			{canUpgradeProperty}
 			{hasMoneyForUpgrade}
 			pendingProperty={pendingProperty}
+			onTradeClick={openTradeModal}
 			{skipUpgrade}
 		/>
 
@@ -99,6 +113,13 @@ if (typeof window !== 'undefined') {
 			casinoLevel={engine.casinoLevel}
 		/>
 	</aside>
+
+	<TradeModal
+		engine={engine}
+		activePlayerId={activePlayerId}
+		open={showTradeModal}
+		onClose={closeTradeModal}
+	/>
 </div>
 
 <style>
@@ -113,8 +134,10 @@ if (typeof window !== 'undefined') {
 
 	.app-shell {
 		display: grid;
-		grid-template-columns: 1fr var(--sidebar-width);
+		grid-template-columns: 300px 1fr 350px;
+		height: 100vh;
 		min-height: 100vh;
+		max-height: 100vh;
 		background: 
 			radial-gradient(circle at 20% 80%, rgba(5, 46, 22, 0.3) 0%, transparent 50%),
 			radial-gradient(circle at 80% 20%, rgba(15, 23, 42, 0.4) 0%, transparent 50%),
@@ -150,27 +173,42 @@ if (typeof window !== 'undefined') {
 		gap: clamp(16px, 2vh, 32px);
 		padding: clamp(16px, 3vh, 32px) clamp(12px, 2vw, 24px);
 		background: var(--color-bg-dark);
-		border-left: 1px solid var(--color-gold-dim);
 		overflow-y: auto;
 		overflow-x: hidden;
 	}
 
-	/* Responsive: na menších obrazovkách přepneme na column layout */
-	@media (max-width: 1024px) {
+	.sidebar-left {
+		border-right: 1px solid var(--color-gold-dim);
+	}
+
+	.sidebar-right {
+		border-left: 1px solid var(--color-gold-dim);
+	}
+
+	/* Responsive: on smaller screens, stack vertically */
+	@media (max-width: 1200px) {
 		.app-shell {
 			grid-template-columns: 1fr;
-			grid-template-rows: auto 1fr;
+			grid-template-rows: auto 1fr auto;
+		}
+
+		.sidebar-left {
+			order: 1;
+			border-right: none;
+			border-bottom: 1px solid var(--color-gold-dim);
+			max-height: 25vh;
+			overflow-y: auto;
 		}
 
 		.board-container {
 			order: 2;
 		}
 
-		.sidebar {
-			order: 1;
+		.sidebar-right {
+			order: 3;
 			border-left: none;
-			border-bottom: 1px solid var(--color-gold-dim);
-			max-height: 40vh;
+			border-top: 1px solid var(--color-gold-dim);
+			max-height: 25vh;
 			overflow-y: auto;
 		}
 
