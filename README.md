@@ -1,42 +1,57 @@
-# sv
+# Svelte Monopoly (WIP)
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+Browser Monopoly-like game built with Svelte 5.
 
-## Creating a project
+This repository is currently a work in progress and is not finished yet.
 
-If you're seeing this, you've probably already done this step. Congrats!
+## What this is
+
+- Frontend game board and UI in Svelte 5.
+- Local game engine/state in the client.
+- Custom board visuals and game actions (buy, upgrades, trade modal, log, notifications).
+
+## Tech stack
+
+- Svelte 5 + SvelteKit
+- Vite
+- Tailwind CSS (project styling setup)
+
+Planned/expected backend for real-time multiplayer:
+
+- Flask/FastAPI (Python)
+- Socket.IO
+
+## Current status
+
+Implemented:
+
+- Main board layout and tiles
+- Player panel and action panel
+- Event zone / notifications / game log
+- Basic turn and property interactions in the frontend engine
+
+Not finished yet:
+
+- Backend server integration (required for proper multiplayer/state sync)
+- Networked game rooms / matchmaking
+- Full rule validation and edge-case handling
+- Production-ready game flow and balancing
+- Tests and deployment hardening
+
+## Run locally
 
 ```sh
-# create a new project
-npx sv create my-app
-```
-
-To recreate this project with the same configuration:
-
-```sh
-# recreate this project
-npx sv@0.15.2 create --template minimal --no-types --add prettier tailwindcss="plugins:none" --install npm svelte-monopoly
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```sh
+npm install
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
 
-## Building
+Then open the local URL shown by Vite (usually `http://localhost:5173`).
 
-To create a production version of your app:
+## Important note
 
-```sh
-npm run build
-```
+This repo is currently mainly frontend/prototype level.
+To become a complete game, it still needs the backend layer (Flask + Socket.IO) and final game-rule completion.
 
-You can preview the production build with `npm run preview`.
+## Why this repo exists
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+To share progress publicly and make the project easy to understand for anyone landing on GitHub.
