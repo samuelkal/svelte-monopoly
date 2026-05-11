@@ -11,7 +11,8 @@ This repository is currently a work in progress and is not finished yet.
 - Custom board visuals and game actions (buy, upgrades, trade modal, log, notifications).
 
 ## Current state
-![CurrentState](https://imgur.com/a/PRYbmxH.png)
+
+![CurrentState](https://imgur.com/qdR5205.png)
 
 ## Tech stack
 
