@@ -158,9 +158,10 @@ if (typeof window !== 'undefined') {
 
 	.board-wrap {
 		position: relative;
-		width: 100%;
-		height: 100%;
-		max-height: calc(100vh - (2 * clamp(4px, 0.5vmin, 10px)));
+		/* Match the board grid proportions so it scales consistently without becoming too narrow */
+		width: min(100%, calc((170vh - (2 * clamp(4px, 0.5vmin, 10px))) * 0.85));
+		aspect-ratio: 1 / 0.75;
+		height: auto;
 		border-radius: clamp(12px, 2vmin, 24px);
 		overflow: hidden;
 		background: var(--color-bg-dark);
@@ -213,7 +214,8 @@ if (typeof window !== 'undefined') {
 		}
 
 		.board-wrap {
-			width: min(90vmin, 100%);
+			width: min(95vw, 100%);
+			aspect-ratio: 11 / 13;
 		}
 	}
 

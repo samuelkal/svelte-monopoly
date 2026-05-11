@@ -3,6 +3,7 @@
 	import czechFlagImg from '$lib/assets/tiles/IMG_0404.JPG';
 	import jamaicaImg from '$lib/assets/tiles/Jamaica.JPG';
 	import israelImg from '$lib/assets/tiles/Izrael.JPG';
+	import mainmapImg from '$lib/assets/tiles/mainmap.JPG';
 
 	let { players, properties } = $props();
 	
@@ -22,7 +23,7 @@
 		37: 'darkred', 38: 'darkred',
 
 		//utilities
-		7: 'Gold', 36: 'Gold', 25: 'utility', 17: 'utility'
+		7: 'Grey', 36: 'Grey', 25: 'Grey', 17: 'Grey'
 
 	};
 
@@ -159,6 +160,7 @@
 	{/each}
 	
 	<div class="board-center">
+		<img src={mainmapImg} alt="Main Map background" class="main-map-bg" />
 		<EventCardZone />
 	</div>
 </div>
@@ -183,6 +185,15 @@
 		align-items: center;
 		justify-content: center;
 		pointer-events: none; /* Let clicks pass if needed, though GameLog might need them */
+	}
+
+	.main-map-bg {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		object-fit: fill;
+		z-index: 0;
+		border-radius: clamp(10px, 2vmin, 20px);
 	}
 
 	:global(.board-center > *) {
@@ -245,6 +256,8 @@
 		justify-content: center;
 		pointer-events: none;
 		padding: 0 6px;
+		border-radius: 8px; /* rounded ends for top/bottom stripes */
+		overflow: visible;
 	}
 
 	.cell.bottom-edge .property-stripe {
@@ -258,8 +271,10 @@
 		bottom: 0;
 		left: 0;
 		right: auto;
+		/* make vertical stripes pill-shaped */
 		width: 10%;
-		height: auto;
+		height: 100%;
+		border-radius: 8px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -323,44 +338,39 @@
 
 /* Toto ovládá samotný obrázek */
 .tile-bg-img {
-    inset: 0;
-    width: 100%;
-    height: 100%;
+	inset: 0;
+	width: 100%;
+	height: 100%;
 	object-fit: cover;
-    pointer-events: none;
-    z-index: 0;
+	pointer-events: none;
+	z-index: 0;
+	transform: translateY(var(--tile-shift-y, 0%));
+	transition: transform 240ms ease;
 }
-
-/* Toto ho posune doleva */
+/* left */
 .tile-bg-left {
-    /* calc(50% - 10px) znamená: buď na středu a jdi o 10px vlevo */
-    object-position: calc(50% + 30px) center !important;
+    object-position: 30% 50% !important;
 }
 .tile-bg-left-iz {
-    /* calc(50% - 10px) znamená: buď na středu a jdi o 10px vlevo */
-    object-position: calc(50% + 30px) center !important;
+    object-position: 30% 50% !important;
 }
 
-/* Toto ho posune doprava (pokud chceš) */
+/* Toto ho posune doprava */
 .tile-bg-right {
-    object-position: calc(50% - 40px) center !important;
-
+    object-position: 80% 50% !important;
 }
 .tile-bg-right-iz {
-    object-position: calc(50% - 36px) center !important;
-
+    object-position: 81% 50% !important;
 }
 
-/* Toto ho posune nahoru */
+/* Toto ho posune nahoru (vertikální posun přes proměnnou) */
 .tile-bg-top {
-    object-position: center calc(50% - 55px) !important;
-	object-fit: cover;
+	--tile-shift-y: -42%;
 }
 
-/* Toto ho posune dolů */
+/* Toto ho posune dolů (vertikální posun přes proměnnou) */
 .tile-bg-bottom {
-    object-position: center calc(50% -1px) !important;
-	object-fit: cover;
+	--tile-shift-y: 0%;
 }
 
 	/* Název a cena políčka */
@@ -401,6 +411,8 @@
 		font-weight: 900;
 		line-height: 1.05;
 		overflow: visible;
+		text-align: center;
+		padding-top: 6px;
 	}
 
 	.cell.bottom-edge .cell-name {
@@ -408,6 +420,15 @@
 		font-weight: 900;
 		line-height: 1;
 		overflow: visible;
+		text-align: center;
+		padding-bottom: 6px;
+	}
+
+	/* (reverted) corner names left unchanged — styling reserved for price tags only */
+
+	.cell.corner .cell-name{
+		justify-content: center;
+		padding-top:50px
 	}
 
 	.cell-price {
@@ -474,8 +495,9 @@
 		/* Place price at the top of bottom-row tiles (21-29) and let it overlap the name */
 		top: 4px;
 		bottom: auto;
-		right: 4px;
-		left: auto;
+		left: 50%;
+		right: auto;
+		transform: translateX(-50%);
 		z-index: 12; /* above .cell-label-area (10) */
 	}
 
@@ -558,12 +580,22 @@
 		overflow: visible;
 	}
 
-	.cell.bottom-edge .cell-price {
-		/* Ensure price stays at the top and visible above the label */
-		top: 4px;
-		bottom: auto;
-		overflow: visible;
-		z-index: 12;
+	/* finalized bottom-edge price centering handled above */
+
+	.cell[data-position="0"] .cell-name,
+	.cell[data-position="20"] .cell-name {
+		transform: rotate(-12deg);
+		transform-origin: center;
+		font-size: 50px;
+		letter-spacing: 2px;
+	}
+
+	.cell[data-position="10"] .cell-name,
+	.cell[data-position="30"] .cell-name {
+		transform: rotate(12deg);
+		transform-origin: center;
+		font-size: 50px;
+		letter-spacing: 2px;
 	}
 
 	/* Player tokens */
