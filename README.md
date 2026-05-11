@@ -10,6 +10,10 @@ This repository is currently a work in progress and is not finished yet.
 - Local game engine/state in the client.
 - Custom board visuals and game actions (buy, upgrades, trade modal, log, notifications).
 
+## Current state
+![CurrentState]
+(https://ibb.co/S7Zc7Fyk)
+
 ## Tech stack
 
 - Svelte 5 + SvelteKit
@@ -55,3 +59,4 @@ To become a complete game, it still needs the backend layer (Flask + Socket.IO) 
 ## Why this repo exists
 
 To share progress publicly and make the project easy to understand for anyone landing on GitHub.
+
