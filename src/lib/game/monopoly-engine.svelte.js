@@ -4,7 +4,7 @@ const BOARD_SIZE = 40;
 const START_REWARD_PASS = 200;
 const START_REWARD_LAND = 100;
 const JAIL_FEE = 50;
-const TAX_TILES = [3, 14, 33];
+const TAX_TILES = [3, 14, 28, 33];
 const TAX_AMOUNT = 200;
 const JAIL_TILE = 10;
 const CASINO_TILE = 20;
@@ -62,11 +62,10 @@ function createDefaultProperties() {
     // SPODNÍ STRANA (ID 21-29) - IZRAEL & ČÍNA
     21: { name: 'Tel Aviv', price: 800, rent: 220, owner: null, color: 'blue', houses: 0, houseCost: 300 },
     22: { name: 'Herzliya', price: 850, rent: 250, owner: null, color: 'blue', houses: 0, houseCost: 300 },
-    23: { name: 'IDK', price: 900, rent: 280, owner: null, color: 'blue', houses: 0, houseCost: 350 },
     24: { name: 'Jerusalem', price: 1000, rent: 350, owner: null, color: 'blue', houses: 0, houseCost: 350 },
-    27: { name: 'Beijing', price: 750, rent: 180, owner: null, color: 'pink', houses: 0, houseCost: 250 },
-    28: { name: 'Tibet', price: 800, rent: 200, owner: null, color: 'pink', houses: 0, houseCost: 250 },
-    29: { name: 'Shanghai', price: 900, rent: 250, owner: null, color: 'pink', houses: 0, houseCost: 300 },
+    29: { name: 'Tibet', price: 800, rent: 200, owner: null, color: 'pink', houses: 0, houseCost: 250 },
+	27: { name: 'Beijing', price: 750, rent: 180, owner: null, color: 'pink', houses: 0, houseCost: 250 },
+    26: { name: 'Shanghai', price: 900, rent: 250, owner: null, color: 'pink', houses: 0, houseCost: 300 },
     25: { name: 'Hat', price: 200, rent: 50, owner: null, color: 'utility', houses: 0, houseCost: 0 },
 
     // LEVÁ STRANA (ID 31-39) - JAMAJKA & USA

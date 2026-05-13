@@ -18,7 +18,7 @@
 		16: 'ORANGE', 18: 'ORANGE',
 		17: 'green', 19: 'green',
 		32: 'purple', 34: 'purple', 35: 'purple',
-		27: '#AA336A', 28: '#AA336A', 29: '#AA336A',
+		27: '#AA336A', 26: '#AA336A', 29: '#AA336A',
 		21: '#005EB8', 22: '#005EB8', 24: '#005EB8',
 		37: 'darkred', 38: 'darkred',
 
@@ -191,9 +191,10 @@
 		position: absolute;
 		width: 100%;
 		height: 100%;
-		object-fit: fill;
+		object-fit: cover;
 		z-index: 0;
-		border-radius: clamp(10px, 2vmin, 20px);
+		border-radius: clamp(2px, 2vmin, 20px);
+		opacity: 0.6;	
 	}
 
 	:global(.board-center > *) {
@@ -438,7 +439,7 @@
 		width: auto;
 		max-width: calc(100% - 8px);
 		text-align: center;
-		font-size: 0.72rem;
+		font-size: medium;
 		font-weight: 800;
 		z-index: 13;
 		opacity: 0.8;
@@ -461,7 +462,7 @@
 		padding: 2px 4px;
 		width: auto;
 		max-width: calc(100% - 8px);
-		font-size: 0.72rem;
+		font-size: medium;
 		font-weight: 800;
 		z-index: 14;
 		box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
@@ -536,12 +537,12 @@
 		left: 4px;
 		right: auto;
 		transform: translateY(-50%) rotate(-90deg);
+		font-size: medium;
 	}
 
 	.cell.left-edge .cell-name,
 	.cell.right-edge .cell-name {
 		position: absolute;
-		font-size: 0.75rem;
 		font-weight: 900;
 		margin: 0;
 		line-height: 1.05;
@@ -560,6 +561,7 @@
 		padding: 0;
 		box-sizing: border-box;
 		transform-origin: center;
+		font-size: large;
 	}
 
 	.cell.left-edge .cell-name {
@@ -568,15 +570,23 @@
 		text-orientation: mixed;
 		line-height: 1;
 		white-space: nowrap;
+		font-size: large;
 	}
 
 	.cell.right-edge .cell-name {
 		right: 0;
 		transform: rotate(-90deg);
+		font-size: large;
+	}
+	.cell.top-edge .cell-name {
+		line-height: 0.6;
+		font-size: large;
+		overflow: visible;
 	}
 
 	.cell.bottom-edge .cell-name {
-		line-height: 1;
+		line-height: 0.6;
+		font-size: large;
 		overflow: visible;
 	}
 

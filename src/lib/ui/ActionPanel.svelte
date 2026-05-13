@@ -93,11 +93,11 @@
 <style>
 	.action-panel h3 {
 		color: var(--color-gold, #fbbf24);
-		margin: 0 0 clamp(12px, 2vh, 16px) 0;
-		font-size: clamp(0.95rem, 2vmin, 1.1rem);
+		margin: 0 0 clamp(14px, 2.2vh, 18px) 0;
+		font-size: clamp(1.05rem, 2.2vmin, 1.2rem);
 		font-family: var(--font-display, system-ui);
 		font-weight: 700;
-		letter-spacing: 0.5px;
+		letter-spacing: 0.8px;
 		text-transform: uppercase;
 	}
 
@@ -110,7 +110,7 @@
 	.btn {
 		width: 100%;
 		padding: clamp(10px, 2vh, 14px) clamp(12px, 2.5vw, 16px);
-		font-size: clamp(0.85rem, 1.8vmin, 0.95rem);
+		font-size: clamp(1.5rem, 2.3vmin, 1.5rem);
 		font-weight: 700;
 		color: #fff;
 		border: none;

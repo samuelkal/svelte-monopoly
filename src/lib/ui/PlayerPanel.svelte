@@ -12,6 +12,7 @@
 			brown: '#92400e',
 			darkbrown: '#78350f',
 			darkred: '#be123c',
+			orange: 'orange',
 			utility: '#6366f1',
 			special: '#8b5cf6'
 		};
@@ -102,11 +103,11 @@
 	}
 
 	.player-card {
-		padding: clamp(10px, 2vh, 14px);
-		margin-bottom: clamp(8px, 1.5vh, 12px);
+		padding: clamp(14px, 2.4vh, 20px);
+		margin-bottom: clamp(10px, 2vh, 16px);
 		background: var(--color-bg-panel, rgba(255, 255, 255, 0.04));
 		border: 1px solid rgba(255, 255, 255, 0.08);
-		border-radius: clamp(8px, 1.5vmin, 12px);
+		border-radius: clamp(10px, 1.8vmin, 14px);
 		transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 	}
 
@@ -126,8 +127,8 @@
 	.player-header {
 		display: flex;
 		align-items: center;
-		gap: clamp(8px, 1.5vw, 12px);
-		margin-bottom: clamp(6px, 1vh, 8px);
+		gap: clamp(10px, 1.8vw, 16px);
+		margin-bottom: clamp(8px, 1.4vh, 12px);
 		background: none;
 		border: none;
 		width: 100%;
@@ -144,13 +145,13 @@
 	}
 
 	.player-token {
-		width: clamp(36px, 6vmin, 44px);
+		width: clamp(44px, 7vmin, 54px);
 		aspect-ratio: 1;
 		border-radius: 50%;
 		display: grid;
 		place-items: center;
 		font-weight: 700;
-		font-size: clamp(0.85rem, 1.8vmin, 0.95rem);
+		font-size: clamp(0.95rem, 2vmin, 1.1rem);
 		color: #fff;
 		box-shadow: 
 			0 2px 8px rgba(0, 0, 0, 0.3),
@@ -177,19 +178,13 @@
 	.money {
 		color: #fff;
 		font-weight: 700;
-		font-size: clamp(1rem, 2.2vmin, 1.15rem);
+		font-size: clamp(1.1rem, 2.4vmin, 1.3rem);
 		line-height: 1.2;
 	}
 
 	.meta {
 		color: #d4d4d4;
-		font-size: clamp(0.75rem, 1.6vmin, 0.85rem);
-	}
-
-	.owns {
-		font-size: clamp(0.75rem, 1.6vmin, 0.85rem);
-		color: #fcd34d;
-		margin-top: clamp(4px, 0.8vh, 6px);
+		font-size: clamp(0.8rem, 1.7vmin, 0.95rem);
 	}
 
 	.jail {
@@ -203,13 +198,13 @@
 	}
 
 	.casino-info {
-		padding: clamp(12px, 2vh, 16px);
-		margin-top: clamp(12px, 2vh, 18px);
+		padding: clamp(14px, 2.4vh, 18px);
+		margin-top: clamp(14px, 2.2vh, 20px);
 		background: linear-gradient(135deg, rgba(146, 64, 14, 0.2) 0%, rgba(120, 53, 15, 0.1) 100%);
 		border: 1.5px solid rgba(251, 191, 36, 0.4);
-		border-radius: clamp(8px, 1.5vmin, 12px);
+		border-radius: clamp(10px, 1.8vmin, 14px);
 		color: #fef3c7;
-		font-size: clamp(0.8rem, 1.8vmin, 0.9rem);
+		font-size: clamp(0.85rem, 1.9vmin, 1rem);
 		line-height: 1.5;
 	}
 
